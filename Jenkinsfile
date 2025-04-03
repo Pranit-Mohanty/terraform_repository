@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        AWS_DEFAULT_REGION = 'your-aws-region'
+        AWS_DEFAULT_REGION = params.aws-region
     }
     stages {
         stage('Checkout Code') {
@@ -33,7 +33,7 @@ pipeline {
         stage('Upload State to S3') {
             steps {
                 script {
-                    sh 'aws s3 cp terraform.tfstate s3://your-bucket-name'
+                    sh 'aws s3 cp terraform.tfstate s3://pranit-terraform-bucket'
                 }
             }
         }
