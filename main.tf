@@ -1,19 +1,19 @@
 provider "aws" {
-  region = "your-aws-region"
+  region = "us-east-1"
 }
 
-resource "aws_instance" "example" {
-  ami           = "your-ami-id"
+resource "aws_instance" "my_ec2_instance" {
+  ami           = "ami-00a929b66ed6e0de6"
   instance_type = "t2.micro"
   tags = {
-    Name = "ExampleInstance"
+    Name = "DemoInstance"
   }
 }
 
 terraform {
   backend "s3" {
-    bucket = "your-bucket-name"
+    bucket = "pranit-terraform-bucket"
     key    = "terraform.tfstate"
-    region = "your-aws-region"
+    region = "us-east-1"
   }
 }
